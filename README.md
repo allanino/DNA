@@ -28,9 +28,6 @@ To see the decoded file:
 
     cat examples/DNA_versions/wssnt10.txt.decoded
 
-The source code organization follows the article steps and nomenclature, so it should be easy to understand.
-
-
 [1]:http://www.nature.com/nature/journal/v494/n7435/full/nature11875.html
 [2]:http://www.nature.com/nature/journal/vaop/ncurrent/extref/nature11875-s2.pdf
 [3]:http://www.ebi.ac.uk/goldman-srv/DNA-storage/orig_files/
