@@ -2,7 +2,7 @@ DNA
 ===
 
 This is a python script to encode/decode arbitrary computer files into DNA sequences.
-It is a straight implementation of a method published in [this][1]Nature's paper.
+It is a straight implementation of a method published in [this][1] Nature's paper.
 The details of the method can be found in the [Supplementary Information][2] report.
 The source code organization follows the article steps and nomenclature, so it should be easy to understand.
 
