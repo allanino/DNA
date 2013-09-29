@@ -42,7 +42,7 @@ class DNA(object):
         open(file + '.dna', 'w').write(s5)
 
     def decode(self, file):
-        """ Encode file in an DNA string """
+        """ Decode file in an DNA string """
         s5 = open(file, 'r').read()
         s4 = self.__S5_to_S4(s5)
         s0 = self.__S4_to_S0(s4)
@@ -50,6 +50,7 @@ class DNA(object):
         open(file[:-4]+'.decoded', "wb").write(binascii.unhexlify(s0))
 
     def decode_join(self, file):
+        """ Decode and join DNA zip file into DNA string """
         Findex = self.__Files_to_Findex(file)
         Fi = self.__Findex_to_Fi(Findex)
         s5 = self.__Fi_to_S5(Fi)
@@ -59,7 +60,7 @@ class DNA(object):
         open(file[:-13]+'.decoded', "wb").write(binascii.unhexlify(s0))
         
     def encode_split(self, file):
-        """ Return a list of DNA sequences enconding file """
+        """ Encode file in many overlapping DNA string. Returns a zip file """
 
         s1 = self.__S0_to_S1(file)
         s4 = self.__S1_to_S4(s1)
