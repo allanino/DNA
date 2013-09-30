@@ -75,7 +75,6 @@ class DNA(object):
         # Update 2-trits file dictionary (for later use: if more than one file)
         trit = self.__base10_to_base3(len(self.files_trits))
         trit = '0'  * (2 - len(trit)) + trit
-        print trit
         self.files_trits[file] = trit
         # Concatenate byte by byte to s1 (after Huffman codification)
         s1 = ""
