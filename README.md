@@ -29,5 +29,5 @@ To see the decoded file:
     cat examples/DNA_versions/wssnt10.txt.decoded
 
 [1]:http://www.nature.com/nature/journal/v494/n7435/full/nature11875.html
-[2]:http://www.nature.com/nature/journal/vaop/ncurrent/extref/nature11875-s2.pdf
+[2]:http://www.nature.com/nature/journal/v494/n7435/extref/nature11875-s2.pdf
 [3]:http://www.ebi.ac.uk/goldman-srv/DNA-storage/orig_files/
