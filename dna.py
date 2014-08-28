@@ -127,13 +127,13 @@ class DNA(object):
                 F.append(s5[25*i:25*i+100])
         return F
 
-    def __Fi_to_Findex(self, F, file):
+    def __Fi_to_Findex(self, F, input_file):
         
         # Indexed segments
         Findex = []
 
         # File ID
-        ID = self.files_trits[file]
+        ID = self.files_trits[input_file]
 
         # Create table
         dna_table = {
