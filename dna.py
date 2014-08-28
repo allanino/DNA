@@ -59,7 +59,7 @@ class DNA(object):
         # Save s0 after conversion from hexadecimal to bytes
         open(input_file[:-13]+'.decoded', "wb").write(binascii.unhexlify(s0))
         
-    def encode_split(self, file):
+    def encode_split(self, input_file):
         """ Encode file in many overlapping DNA string. Returns a zip file """
 
         s1 = self.__S0_to_S1(input_file)
