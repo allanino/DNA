@@ -1,5 +1,7 @@
-DNA
+DNA 
 ===
+
+[![Code Health](https://landscape.io/github/allanino/DNA/master/landscape.png)](https://landscape.io/github/allanino/DNA/master)
 
 This is a python script to encode/decode arbitrary computer files into DNA sequences.
 It is a straight implementation of a method published in [this][1] Nature's paper.
