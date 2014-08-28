@@ -33,52 +33,52 @@ class DNA(object):
         for row in csv_reader:
             self.code[row[0]] = row[1]
 
-    def encode(self, file):
-        """ Encode file in an DNA string """
+    def encode(self, input_file):
+        """ Encode input_file in an DNA string """
 
-        s1 = self.__S0_to_S1(file)
+        s1 = self.__S0_to_S1(input_file)
         s4 = self.__S1_to_S4(s1)
         s5 = self.__S4_to_S5(s4)
-        open(file + '.dna', 'w').write(s5)
+        open(input_file + '.dna', 'w').write(s5)
 
-    def decode(self, file):
+    def decode(self, input_file):
         """ Decode file in an DNA string """
-        s5 = open(file, 'r').read()
+        s5 = open(input_file, 'r').read()
         s4 = self.__S5_to_S4(s5)
         s0 = self.__S4_to_S0(s4)
         # Save s0 after conversion from hexadecimal to bytes
-        open(file[:-4]+'.decoded', "wb").write(binascii.unhexlify(s0))
+        open(input_file[:-4]+'.decoded', "wb").write(binascii.unhexlify(s0))
 
-    def decode_join(self, file):
+    def decode_join(self, input_file):
         """ Decode and join DNA zip file into DNA string """
-        Findex = self.__Files_to_Findex(file)
+        Findex = self.__Files_to_Findex(input_file)
         Fi = self.__Findex_to_Fi(Findex)
         s5 = self.__Fi_to_S5(Fi)
         s4 = self.__S5_to_S4(s5)
         s0 = self.__S4_to_S0(s4)
         # Save s0 after conversion from hexadecimal to bytes
-        open(file[:-13]+'.decoded', "wb").write(binascii.unhexlify(s0))
+        open(input_file[:-13]+'.decoded', "wb").write(binascii.unhexlify(s0))
         
     def encode_split(self, file):
         """ Encode file in many overlapping DNA string. Returns a zip file """
 
-        s1 = self.__S0_to_S1(file)
+        s1 = self.__S0_to_S1(input_file)
         s4 = self.__S1_to_S4(s1)
         s5 = self.__S4_to_S5(s4)
         F = self.__S5_to_Fi(s5)
-        Findex = self.__Fi_to_Findex(F, file)
-        self.__Findex_to_Files(Findex,file)
+        Findex = self.__Fi_to_Findex(F, input_file)
+        self.__Findex_to_Files(Findex, input_file)
         return Findex
 
-    def __S0_to_S1(self, file):
+    def __S0_to_S1(self, input_file):
     
         # Update 2-trits file dictionary (for later use: if more than one file)
         trit = self.__base10_to_base3(len(self.files_trits))
         trit = '0'  * (2 - len(trit)) + trit
-        self.files_trits[file] = trit
+        self.files_trits[input_file] = trit
         # Concatenate byte by byte to s1 (after Huffman codification)
         s1 = ""
-        with open(file, "rb") as f:
+        with open(input_file, "rb") as f:
             byte = f.read(1)
             while byte:
                 s1 = s1 + self.code[str(int(binascii.hexlify(byte), 16))]
@@ -147,8 +147,8 @@ class DNA(object):
         for i in range(0, len(F)):
             i3 = self.__base10_to_base3(i)
             i3 = '0' * (12 - len(i3)) + i3
-            P = (int(ID[1-1]) + int(i3[1-1]) + int(i3[3-1]) + 
-                int(i3[5-1]) + int(i3[7-1]) + int(i3[9-1]) + int(i3[11-1])) % 3
+            P = (int(ID[1-1]) + int(i3[1-1]) + int(i3[3-1]) +
+                 int(i3[5-1]) + int(i3[7-1]) + int(i3[9-1]) + int(i3[11-1])) % 3
             IX = ID + i3 + str(P)
 
             ix = ''
@@ -180,39 +180,39 @@ class DNA(object):
 
         return Findex
 
-    def __Findex_to_Files(self, Findex, file):
-        dir = file+'.splitted'
-        if not os.path.exists(dir):
-            os.makedirs(dir)
-        zf = zipfile.ZipFile(dir+'.zip', 'w', zipfile.ZIP_DEFLATED)
+    def __Findex_to_Files(self, Findex, input_file):
+        temp_dir = input_file +'.splitted'
+        if not os.path.exists(temp_dir):
+            os.makedirs(temp_dir)
+        zf = zipfile.ZipFile(temp_dir +'.zip', 'w', zipfile.ZIP_DEFLATED)
 
         # Necessary number of leading zeros
         n0 = int(math.log(len(Findex), 10) + 1)
 
         i = 0
         for f in Findex:
-            fragment_file = "{0}.{1:0{2}d}".format(os.path.basename(file), i, n0) 
+            fragment_file = "{0}.{1:0{2}d}".format(os.path.basename(input_file), i, n0) 
             open(fragment_file, 'w').write(f)
             zf.write(fragment_file)
             os.remove(fragment_file)
             i = i + 1
-        os.rmdir(dir)
+        os.rmdir(temp_dir)
 
-    def __Files_to_Findex(self, file):
+    def __Files_to_Findex(self, input_file):
         
         # Remove the .zip
-        dir = file[:-4]
+        temp_dir = input_file[:-4]
 
-        # Extract files to dir
-        zipfile.ZipFile(file, 'r').extractall(dir)
+        # Extract files to temp_dir
+        zipfile.ZipFile(input_file, 'r').extractall(temp_dir)
 
         Findex = []
-        for f in os.listdir(dir):
-            fragment_file = dir + os.sep + f
+        for f in os.listdir(temp_dir):
+            fragment_file = temp_dir + os.sep + f
             Findex.append(open(fragment_file, 'r').read())
             os.remove(fragment_file)
 
-        os.rmdir(dir)
+        os.rmdir(temp_dir)
 
         return Findex
 
@@ -249,14 +249,14 @@ class DNA(object):
             # Extract ID
             ID = IX[:2]
 
-            #Extract i3 and i
+            # Extract i3 and i
             i3 = IX[2:len(IX)-1]
             i = self.__base3_to_base10(i3)
 
-            #Checksum error
+            # Checksum error
             P = int(IX[-1])
             Pexpected = (int(ID[1-1]) + int(i3[1-1]) + int(i3[3-1]) + 
-                int(i3[5-1]) + int(i3[7-1]) + int(i3[9-1]) + int(i3[11-1])) % 3
+                         int(i3[5-1]) + int(i3[7-1]) + int(i3[9-1]) + int(i3[11-1])) % 3
             if P != Pexpected:
                 print "Corrupted segment:\nID = %s\ni = %d" %(ID, i)
             else:
