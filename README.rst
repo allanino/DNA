@@ -1,35 +1,57 @@
-DNA 
+DNA
 ===
 
-[![Code Health](https://landscape.io/github/allanino/DNA/master/landscape.png)](https://landscape.io/github/allanino/DNA/master)
+|Code Health|
 
-This is a python script to encode/decode arbitrary computer files into DNA sequences.
-It is a straight implementation of a method published in [this][1] Nature's paper.
-The details of the method can be found in the [Supplementary Information][2] report.
-The source code organization follows the article steps and nomenclature, so it should be easy to understand.
+This is a python script to encode/decode arbitrary computer files into
+DNA sequences. It is a straight implementation of a method published in
+`this`_ Nature’s paper. The details of the method can be found in the
+`Supplementary Information`_ report. The source code organization
+follows the article steps and nomenclature, so it should be easy to
+understand.
 
 How to use
 ----------
 
+Install it using pip:
 
-The script accepts four types of operations passed as arguments together with the file name:
+.. code-block:: console
 
-    ./dna.py <arg> <inputfile>
+    % pip install file2dna
 
-The following arguments are accepted:
-* -e: encode <inputfile> and save as <inputfile>.dna
-* -d: decode <inputfile(.dna)> and save as <inputfile>.decoded
-* -s: encode <inputfile> splitting into various DNA segments and save as <inputfile>.splitted.zip
-* -j: decode <inputfile(.splitted.zip)> joining the segments and save as <inputfile>.decoded
+The installed script will be called :code:`dna` and accepts four types of operations passed as arguments together
+with the file name:
 
-As a example, we can decode one the [files][3] encoded by the authors of the paper:
+.. code-block:: console
 
-    ./dna.py -d examples/DNA_versions/wssnt10.txt.dna
-    
+    $ dna -h
+    usage: dna [-h] [-e | -s | -d | -j] file
+
+    positional arguments:
+      file        File to be encoded/decoded.
+
+    optional arguments:
+      -h, --help  show this help message and exit
+      -e          encode file and save it as .dna
+      -s          encode file and save it as .splitted.zip
+      -d          decode .dna file and save as .decoded
+      -j          decoded .splitted.zip file and save it as .decoded
+
+As a example, we can decode one the `files`_ encoded by the authors of
+the paper. Suppose you have cloned this repo with its examples folder:
+
+.. code-block:: console
+    $ dna -d examples/DNA_versions/wssnt10.txt.dna
+
 To see the decoded file:
 
-    cat examples/DNA_versions/wssnt10.txt.decoded
+.. code-block:: console
 
-[1]:http://www.nature.com/nature/journal/v494/n7435/full/nature11875.html
-[2]:http://www.nature.com/nature/journal/v494/n7435/extref/nature11875-s2.pdf
-[3]:http://www.ebi.ac.uk/goldman-srv/DNA-storage/orig_files/
+    $ cat examples/DNA_versions/wssnt10.txt.decoded
+
+.. _this: http://www.nature.com/nature/journal/v494/n7435/full/nature11875.html
+.. _Supplementary Information: http://www.nature.com/nature/journal/v494/n7435/extref/nature11875-s2.pdf
+.. _files: http://www.ebi.ac.uk/goldman-srv/DNA-storage/orig_files/
+
+.. |Code Health| image:: https://landscape.io/github/allanino/DNA/master/landscape.png
+   :target: https://landscape.io/github/allanino/DNA/master
