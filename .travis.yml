@@ -1,0 +1,12 @@
+language: python
+python:
+- '2.6'
+- '2.7'
+deploy:
+  provider: pypi
+  user: allanino
+  password:
+    secure: f6A4pg0MWM11U4i+MViOMNe/YM9LT6v/jAFs6JRQ7jp+2eVjuzFlfByVn0sLdALExHi4sno66j7aLTGJcSlwlRZUt/Wss1C+4Rt1D+KrzriFdH8WANKzTF63fh8cZDYMdEerzCkcPwzcBB5tmdpMXq44LIaw/d4a7hF2L5bNqlc=
+  on:
+    tags: true
+    repo: allanino/DNA
