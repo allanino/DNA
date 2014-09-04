@@ -5,9 +5,9 @@ python:
   - '2.7'
   - 'pypy'
 
-install: true
+install: "python setup.py install"
 
-script: true
+script: "dna -h"
 
 deploy:
   provider: pypi
