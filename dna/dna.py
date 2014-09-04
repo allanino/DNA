@@ -7,6 +7,7 @@ import os
 import math
 import zipfile
 import sys
+import argparse
 
 class DNA(object):
     """
@@ -47,7 +48,7 @@ class DNA(object):
         s4 = self.__S5_to_S4(s5)
         s0 = self.__S4_to_S0(s4)
         # Save s0 after conversion from hexadecimal to bytes
-        open(input_file[:-4]+'.decoded', "wb").write(binascii.unhexlify(s0))
+        open(input_file[:-4]+'.decoded', 'wb').write(binascii.unhexlify(s0))
 
     def decode_join(self, input_file):
         """ Decode and join DNA zip file into DNA string """
@@ -57,7 +58,7 @@ class DNA(object):
         s4 = self.__S5_to_S4(s5)
         s0 = self.__S4_to_S0(s4)
         # Save s0 after conversion from hexadecimal to bytes
-        open(input_file[:-13]+'.decoded', "wb").write(binascii.unhexlify(s0))
+        open(input_file[:-13]+'.decoded', 'wb').write(binascii.unhexlify(s0))
         
     def encode_split(self, input_file):
         """ Encode file in many overlapping DNA string. Returns a zip file """
@@ -78,7 +79,7 @@ class DNA(object):
         self.files_trits[input_file] = trit
         # Concatenate byte by byte to s1 (after Huffman codification)
         s1 = ""
-        with open(input_file, "rb") as f:
+        with open(input_file, 'rb') as f:
             byte = f.read(1)
             while byte:
                 s1 = s1 + self.code[str(int(binascii.hexlify(byte), 16))]
@@ -355,34 +356,33 @@ class DNA(object):
 
         return  reverse
 
-if __name__ == '__main__':
-    if(len(sys.argv) != 3):
-        print "\nUsage: ./dna.py <arg> <inputfile>\n<arg> can be:"
-        print  "\t -e: encode <inputfile> and save as <inputfile>.dna"
-        print  "\t -s: encode <inputfile> and save as <inputfile>.splitted.zip"
-        print  "\t -d: decode <inputfile(.dna)> and save as <inputfile>.decoded"
-        print  "\t -j: decode <inputfile(.splitted.zip)> and save as <inputfile>.decoded"
-        sys.exit(1)
-
+def main():
+    parser = argparse.ArgumentParser(prog='dna')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-e', help='encode file and save it as .dna', action="store_true")
+    group.add_argument('-s', help='encode file and save it as .splitted.zip', action="store_true")
+    group.add_argument('-d', help='decode .dna file and save as .decoded', action="store_true")
+    group.add_argument('-j', help='decoded .splitted.zip file and save it as .decoded', action="store_true")
+    parser.add_argument('file', type=str, help='File to be encoded/decoded.')
+    args = parser.parse_args()
+    
     dna = DNA()
-    if sys.argv[1] == '-e':
-        dna.encode(sys.argv[2])
-    elif sys.argv[1] == '-s':
-        dna.encode_split(sys.argv[2])
-    elif sys.argv[1] == '-d':
-        if sys.argv[2][-4:] != '.dna':
+    if args.e:
+        dna.encode(args.file)
+    elif args.s:
+        dna.encode_split(args.file)
+    elif args.d:
+        if args.file[-4:] != '.dna':
             print "I only decode files terminated in .dna!"
             sys.exit(1)
-        dna.decode(sys.argv[2])
-    elif sys.argv[1] == '-j':
-        if sys.argv[2][-13:] != '.splitted.zip':
+        dna.decode(args.file)
+    elif args.j:
+        if args.file[-13:] != '.splitted.zip':
             print "I only decode and join files terminated in .splitted.zip!"
             sys.exit(1)
-        dna.decode_join(sys.argv[2])
+        dna.decode_join(args.file)
     else:
-        print "\nUsage: ./dna.py <arg> <inputfile>\n<arg> can be:"
-        print  "\t -e: encode <inputfile> and save as <inputfile>.dna"
-        print  "\t -s: encode <inputfile> and save as <inputfile>.splitted.zip"
-        print  "\t -d: decode <inputfile(.dna)> and save as <inputfile>.decoded"
-        print  "\t -j: decode <inputfile(.splitted.zip)> and save as <inputfile>.decoded"
-        sys.exit(1)
+        parser.print_help()
+
+if __name__ == '__main__':
+    main()
