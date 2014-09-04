@@ -17,7 +17,7 @@ Install it using pip:
 
 .. code-block:: console
 
-    % pip install file2dna
+    $ pip install file2dna
 
 The installed script will be called :code:`dna` and accepts four types of operations passed as arguments together
 with the file name:
@@ -41,6 +41,7 @@ As a example, we can decode one the `files`_ encoded by the authors of
 the paper. Suppose you have cloned this repo with its examples folder:
 
 .. code-block:: console
+
     $ dna -d examples/DNA_versions/wssnt10.txt.dna
 
 To see the decoded file:
