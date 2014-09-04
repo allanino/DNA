@@ -6,7 +6,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name='DNA',
+    name='file2dna',
     version='0.1',
     author = 'Allan Inocencio de Souza Costa',
     author_email = 'allaninocencio@yahoo.com.br',
