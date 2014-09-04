@@ -1,10 +1,11 @@
 DNA
 ===
 
-|Code Health|
+.. image:: https://landscape.io/github/allanino/DNA/master/landscape.png
+        :target: https://landscape.io/github/allanino/DNA/master
 
-|Building|
-
+.. image:: https://travis-ci.org/allanino/DNA.svg?branch=master
+        :target: https://travis-ci.org/allanino/DNA/builds
 
 This is a python script to encode/decode arbitrary computer files into
 DNA sequences. It is a straight implementation of a method published in
@@ -56,9 +57,3 @@ To see the decoded file:
 .. _this: http://www.nature.com/nature/journal/v494/n7435/full/nature11875.html
 .. _Supplementary Information: http://www.nature.com/nature/journal/v494/n7435/extref/nature11875-s2.pdf
 .. _files: http://www.ebi.ac.uk/goldman-srv/DNA-storage/orig_files/
-
-.. |Code Health| image:: https://landscape.io/github/allanino/DNA/master/landscape.png
-   :target: https://landscape.io/github/allanino/DNA/master
-
-.. |Building| image:: https://travis-ci.org/allanino/DNA.svg?branch=master
-    :target: https://travis-ci.org/allanino/DNA/builds
