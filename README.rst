@@ -3,6 +3,9 @@ DNA
 
 |Code Health|
 
+|Building|
+
+
 This is a python script to encode/decode arbitrary computer files into
 DNA sequences. It is a straight implementation of a method published in
 `this`_ Nature’s paper. The details of the method can be found in the
@@ -56,3 +59,6 @@ To see the decoded file:
 
 .. |Code Health| image:: https://landscape.io/github/allanino/DNA/master/landscape.png
    :target: https://landscape.io/github/allanino/DNA/master
+
+.. |Building| image:: https://travis-ci.org/allanino/DNA.svg?branch=master
+    :target: https://travis-ci.org/allanino/DNA/builds
