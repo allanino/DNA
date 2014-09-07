@@ -362,7 +362,7 @@ def main():
     group.add_argument('-e', help='encode file and save it as .dna', action="store_true")
     group.add_argument('-s', help='encode file and save it as .splitted.zip', action="store_true")
     group.add_argument('-d', help='decode .dna file and save as .decoded', action="store_true")
-    group.add_argument('-j', help='decoded .splitted.zip file and save it as .decoded', action="store_true")
+    group.add_argument('-j', help='decode .splitted.zip file and save it as .decoded', action="store_true")
     parser.add_argument('file', type=str, help='File to be encoded/decoded.')
     args = parser.parse_args()
     
