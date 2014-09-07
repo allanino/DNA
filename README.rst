@@ -17,7 +17,7 @@ DNA
 
 |
 
-This is a python script to encode/decode arbitrary computer files into
+This is a Python script to encode/decode arbitrary computer files into
 DNA sequences. It is a straight implementation of a method published in
 `this`_ Nature’s paper. The details of the method can be found in the
 `Supplementary Information`_ report. The source code organization
@@ -51,7 +51,7 @@ with the file name:
       -d          decode .dna file and save as .decoded
       -j          decode .splitted.zip file and save it as .decoded
 
-As a example, we can decode one the `files`_ encoded by the authors of
+As an example, we can decode one the `files`_ encoded by the authors of
 the paper. Suppose you have cloned this repo with its examples folder:
 
 .. code-block:: console
