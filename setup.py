@@ -1,4 +1,3 @@
-
 import os
 from setuptools import setup
 
@@ -12,11 +11,16 @@ setup(
     author_email = 'allaninocencio@yahoo.com.br',
     description = 'A script to encode/decode arbitrary computer files into DNA sequences.',
     url= 'https://github.com/allanino/DNA',
-    packages=['dna',],
+    packages=['dna'],
     license='MIT',
     keywords= 'dna encoding decoding file',
     long_description=read('README.rst'),
     entry_points = {
         'console_scripts': ['dna=dna.dna:main'],
-    }
+    },
+    classifiers=[
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+    ]
 )
