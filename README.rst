@@ -1,12 +1,21 @@
 DNA
 ===
 
-.. image:: https://landscape.io/github/allanino/DNA/master/landscape.png
-        :target: https://landscape.io/github/allanino/DNA/master
-
 .. image:: https://travis-ci.org/allanino/DNA.svg?branch=master
         :target: https://travis-ci.org/allanino/DNA/builds
 
+.. image:: https://landscape.io/github/allanino/DNA/master/landscape.png
+        :target: https://landscape.io/github/allanino/DNA/master
+
+.. image:: https://img.shields.io/pypi/v/file2dna.svg
+    :target: https://pypi.python.org/pypi/file2dna/
+    :alt: Latest Version
+
+.. image:: https://img.shields.io/pypi/l/file2dna.svg
+    :target: https://pypi.python.org/pypi/file2dna
+    :alt: License
+
+|
 
 This is a python script to encode/decode arbitrary computer files into
 DNA sequences. It is a straight implementation of a method published in
@@ -24,7 +33,7 @@ Install it using pip:
 
     $ pip install file2dna
 
-The installed script will be called :code:`dna` and accepts four types of operations passed as arguments together
+The installed script will be called ``dna`` and accepts four types of operations passed as arguments together
 with the file name:
 
 .. code-block:: console
@@ -40,7 +49,7 @@ with the file name:
       -e          encode file and save it as .dna
       -s          encode file and save it as .splitted.zip
       -d          decode .dna file and save as .decoded
-      -j          decoded .splitted.zip file and save it as .decoded
+      -j          decode .splitted.zip file and save it as .decoded
 
 As a example, we can decode one the `files`_ encoded by the authors of
 the paper. Suppose you have cloned this repo with its examples folder:
