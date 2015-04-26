@@ -12,6 +12,7 @@ setup(
     description = 'A script to encode/decode arbitrary computer files into DNA sequences.',
     url= 'https://github.com/allanino/DNA',
     packages=['dna'],
+    include_package_data=True,
     license='MIT',
     keywords= 'dna encoding decoding file',
     long_description=read('README.rst'),
