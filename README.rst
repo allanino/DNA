@@ -66,18 +66,28 @@ To see the decoded file:
 
 Additional information about this work
 ----------
+
 `Nick Goldman talking about DNA Hard Drivers at the WEF2015`_
+
 `Goldman group DNA storage`_
+
 `Emily Leprous talking about DNA storage`_
+
 `Towards practical, high-capacity, low-maintenance information storage in synthesized DNA`_
 
 Additional information about DNA storage in general
 ----------
+
 `Hidding messages in DNA microdots`_
+
 `An improved Huffman coding method for archiving text, images, and music characters in DNA`_
+
 `Bacterial based storage and encryption device`_
+
 `The Xenotext Experiment`_
+
 `If You Were a Secret Message, Where in the Human Genome Would You Hide?`_
+
 `Store digital files for eons in silica-encased DNA`_
 
 .. _this: http://www.nature.com/nature/journal/v494/n7435/full/nature11875.html
