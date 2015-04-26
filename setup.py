@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name='file2dna',
-    version='0.3',
+    version='0.4',
     author = 'Allan Inocencio de Souza Costa',
     author_email = 'allaninocencio@yahoo.com.br',
     description = 'A script to encode/decode arbitrary computer files into DNA sequences.',
