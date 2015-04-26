@@ -30,7 +30,8 @@ class DNA(object):
 
         # Read the dictionary from data/huff3.dict
         # I made this file from the View_huff3.cd.new.correct
-        csv_reader = csv.reader(open("data/huff3.dict", "r"), delimiter=',')
+        huff_dict = open(os.path.join(os.path.dirname(__file__), "data/huff3.dict"), "r")
+        csv_reader = csv.reader(huff_dict, delimiter=',')
         for row in csv_reader:
             self.code[row[0]] = row[1]
 
